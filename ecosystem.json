@@ -32,7 +32,7 @@
       "key": "/Users/koo/projects/hayaggu.pem",
       "user": "ec2-user",
       // Multi host is possible, just by passing IPs/hostname as an array
-      "host": ["52.52.114.133"],
+      "host": ["52.78.64.126"],
       // Branch
       "ref": "origin/master",
       // Git repository to clone
