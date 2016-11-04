@@ -1,0 +1,53 @@
+{
+  /**
+   * Application configuration section
+   * http://pm2.keymetrics.io/docs/usage/application-declaration/
+   */
+
+  "apps": [{
+    "name": "Hayaggu",
+    "script": "./index.js",
+    "exec_mode": "fork",
+    "env": {
+      "COMMON_VARIABLE": "true",
+      "NODE_ENV": "production"
+    },
+    // Environment variables injected when starting with --env production
+    // http://pm2.keymetrics.io/docs/usage/application-declaration/#switching-to-different-environments
+    "env_production": {
+      "NODE_ENV": "production"
+    },
+    "env_staging": {
+      "NODE_ENV": "production"
+    }
+  }],
+
+  /**
+   * Deployment section
+   * http://pm2.keymetrics.io/docs/usage/deployment/
+   */
+
+  "deploy": {
+    "production": {
+      "key": "/Users/koo/projects/hayaggu.pem",
+      "user": "ec2-user",
+      // Multi host is possible, just by passing IPs/hostname as an array
+      "host": ["52.52.114.133"],
+      // Branch
+      "ref": "origin/master",
+      // Git repository to clone
+      "repo": "git@github.com:AlwaysAwake/hayaggu.git",
+      // Path of the application on target servers
+      "path": "/home/ec2-user/production",
+      // Commands to execute locally (on the same machine you deploy things)
+      // Can be multiple commands separated by the character ";"
+      "pre-deploy-local": "echo 'Hayaggu: Deployment to production server'",
+      // Commands to be executed on the server after the repo has been cloned
+      "post-deploy": "npm install ; npm run clean ; npm run build ; pm2 startOrRestart ecosystem.json --env production",
+      // Environment variables that must be injected in all applications on this env
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  }
+}
