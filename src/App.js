@@ -7,7 +7,7 @@ import FontIcon from 'material-ui/FontIcon';
 
 class App extends Component {
   render() {
-    const { children } = this.props;
+    const { children, dispatch } = this.props;
 
     return (
       <div className="expand">
@@ -32,7 +32,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(App);
