@@ -18,7 +18,7 @@ class Main extends Component {
           <DemoList />
         </div>
         <div className="map-wrapper mdl-cell--6-col">
-          <GoogleMapWrapper />
+          <GoogleMapWrapper markers={[]} />
         </div>
       </div>
     );
@@ -26,7 +26,7 @@ class Main extends Component {
 }
 
 Main.propTypes = {
-
+  dispatch: PropTypes.func.isRequired,
 };
 
 export default connect()(Main);

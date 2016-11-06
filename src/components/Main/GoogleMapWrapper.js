@@ -30,7 +30,7 @@ export default class GoogleMapWrapper extends Component {
         }
         onMapLoad={noop}
         onMapClick={noop}
-        markers={[]}
+        markers={this.props.markers}
         onMarkerRightClick={noop}
       />
     );
