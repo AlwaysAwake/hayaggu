@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { GoogleMap, withGoogleMap } from 'react-google-maps';
+import { GoogleMap, withGoogleMap, Marker } from 'react-google-maps';
 import noop from 'lodash/noop';
 
 const GettingStartedGoogleMap = withGoogleMap(props => (
@@ -10,10 +10,7 @@ const GettingStartedGoogleMap = withGoogleMap(props => (
     onClick={props.onMapClick}
   >
     {props.markers.map(marker => (
-      <Marker
-        {...marker}
-        onRightClick={() => props.onMarkerRightClick(marker)}
-      />
+      <Marker {...marker} />
     ))}
   </GoogleMap>
 ));
@@ -31,7 +28,6 @@ export default class GoogleMapWrapper extends Component {
         onMapLoad={noop}
         onMapClick={noop}
         markers={this.props.markers}
-        onMarkerRightClick={noop}
       />
     );
   }

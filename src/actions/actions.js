@@ -18,7 +18,18 @@ export function fetchDemos() {
     return fetch(`${baseURL}`)
       .then(checkStatus)
       .then(parseJSON)
-      .then(() => dispatch(setDemos))
+      .then(json => dispatch(setDemos(json)))
       .catch(error => console.error(error));
+  };
+}
+
+export function selectDemo(clickedDemo) {
+  return (dispatch, getState) => {
+    const { demos: { demos, selectedDemo } } = getState();
+
+    return dispatch({
+      type: ActionTypes.SELECT_DEMO,
+      demo: selectedDemo.id === clickedDemo.id ? {} : demos.find(demo => demo.id === clickedDemo.id),
+    });
   };
 }
