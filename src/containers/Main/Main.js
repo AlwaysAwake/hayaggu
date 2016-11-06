@@ -11,11 +11,13 @@ class Main extends Component {
   }
 
   render() {
+    const { demos } = this.props;
+
     return (
       <div className="expand mdl-grid">
         <div className="map-item-wrapper mdl-cell--6-col">
           <h4>집회 목록</h4>
-          <DemoList />
+          <DemoList demos={demos} />
         </div>
         <div className="map-wrapper mdl-cell--6-col">
           <GoogleMapWrapper markers={[]} />
@@ -27,6 +29,12 @@ class Main extends Component {
 
 Main.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  demos: PropTypes.array.isRequired,
 };
 
-export default connect()(Main);
+export default connect(
+  state => ({
+    demos: state.demos,
+  })
+)
+(Main);

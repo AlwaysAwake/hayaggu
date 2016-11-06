@@ -3,7 +3,7 @@ import { replace } from 'react-router-redux';
 
 import * as ActionTypes from '../constants/actions';
 import { baseURL } from '../constants/api';
-import { parseJSON, checkStatus } from '../utlis/promiseMiddleware';
+import { parseJSON, checkStatus } from '../utils/promiseMiddleware';
 
 
 function setDemos(json) {
