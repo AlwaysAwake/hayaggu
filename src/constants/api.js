@@ -1,4 +1,4 @@
 export const baseURL = {
-  production: 'http://52.79.173.235',
-  dev: 'http://52.79.173.235',
+  production: 'http://api.hayaggu.com',
+  dev: 'http://api.hayaggu.com',
 }[process.env.NODE_ENV || 'production'];
