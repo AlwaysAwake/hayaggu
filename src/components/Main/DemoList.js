@@ -18,11 +18,7 @@ class DemoList extends Component {
                 <CardText>
                   {`장소: ${demo.source}`}
                   <br />
-                  {`주소: ${demo.source_address}`}
-                  <br />
                   {`주최: ${demo.host}`}
-                  <br />
-                  {`기타 정보: ${demo.description || ''}`}
                 </CardText>
               </Card>
             );
