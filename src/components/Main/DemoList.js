@@ -13,7 +13,7 @@ class DemoList extends Component {
         {
           demos.map((demo, idx) => {
             return (
-              <Card onClick={() => onSelectDemo(demo)} key={idx}>
+              <Card onClick={() => onSelectDemo(demo)} key={idx} containerStyle={{ marginBottom: 10 }}>
                 <CardTitle title={demo.title} subtitle={convertKoreanFormat(demo.sdate)} />
                 <CardText>
                   {`장소: ${demo.source}`}
@@ -25,8 +25,8 @@ class DemoList extends Component {
                   {`기타 정보: ${demo.description || ''}`}
                 </CardText>
               </Card>
-            );  
-          })      
+            );
+          })
         }
       </div>
     );

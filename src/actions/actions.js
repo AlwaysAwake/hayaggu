@@ -9,7 +9,7 @@ import { parseJSON, checkStatus } from '../utils/promiseMiddleware';
 function setDemos(json) {
   return {
     type: ActionTypes.SET_DEMOS,
-    demos: json,
+    demos: json.demo_list,
   };
 }
 

@@ -43,7 +43,7 @@ export default connect(
     demos: state.demos.demos,
     selectedDemo: state.demos.selectedDemo,
     demoPositions: state.demos.demos.map(demo => ({
-      key: demo.title,
+      key: demo.id,
       position: {
         lat: demo.source_latitude,
         lng: demo.source_longitude,
