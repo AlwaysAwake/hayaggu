@@ -24,7 +24,7 @@ class DemoList extends Component {
                   title={demo.title}
                   subtitle={convertKoreanFormat(demo.sdate)}
                   style={{ padding: 10 }}
-                  titleStyle={{ fontSize: 18, color: selectedDemo.id === demo.id && 'rgba(255, 255, 255, 0.870588)' }}
+                  titleStyle={{ fontSize: 18, color: selectedDemo.id === demo.id && 'rgba(255, 255, 255, 0.870588)', lineHeight: 'normal' }}
                   subtitleStyle={{ color: selectedDemo.id === demo.id ? 'rgba(255, 255, 255, 0.541176)' : 'rgba(0, 0, 0, 0.541176)' }}
                 />
                 <CardText style={{ padding: 10, color: selectedDemo.id === demo.id && 'rgba(255, 255, 255, 0.870588)' }}>
