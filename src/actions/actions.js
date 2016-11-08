@@ -15,7 +15,7 @@ function setDemos(json) {
 
 export function fetchDemos() {
   return dispatch => {
-    return fetch(`${baseURL}`)
+    return fetch(`${baseURL}/demo/list`)
       .then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(setDemos(json)))

@@ -8,7 +8,7 @@ import { GoogleMapWrapper, DemoList } from '../../components';
 
 class Main extends Component {
   componentWillMount() {
-
+    this.props.dispatch(Actions.fetchDemos());
   }
 
   selectDemo = (demo) => {
@@ -40,10 +40,9 @@ Main.propTypes = {
 
 export default connect(
   state => ({
-    // demos: state.demos.demos,
-    demos: fixtureDemos,
+    demos: state.demos.demos,
     selectedDemo: state.demos.selectedDemo,
-    demoPositions: fixtureDemos.map(demo => ({
+    demoPositions: state.demos.demos.map(demo => ({
       key: demo.title,
       position: {
         lat: demo.source_latitude,
