@@ -6,10 +6,7 @@ const initialState = { demos: [], selectedDemo: {} };
 const demos = (state = initialState, action) => {
   switch (action.type) {
     case ActionTypes.SET_DEMOS:
-      return {
-        ...state,
-        demos: action.demos,
-      };
+      return { ...state, demos: action.demos };
 
     case ActionTypes.SELECT_DEMO:
       return { ...state, selectedDemo: action.demo };

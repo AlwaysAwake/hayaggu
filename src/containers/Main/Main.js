@@ -39,16 +39,20 @@ Main.propTypes = {
 };
 
 export default connect(
-  state => ({
-    demos: state.demos.demos,
-    selectedDemo: state.demos.selectedDemo,
-    demoPositions: state.demos.demos.map(demo => ({
-      key: demo.id,
-      position: {
-        lat: demo.source_latitude,
-        lng: demo.source_longitude,
-      },
-    })),
-  })
+  state => {
+    const { demos, selectedDemo } = state.demos;
+
+    return {
+      demos: demos,
+      selectedDemo,
+      demoPositions: demos.filter(d => selectedDemo.id ? d.id === selectedDemo.id : true).map(demo => ({
+        key: demo.id,
+        position: {
+          lat: demo.source_latitude,
+          lng: demo.source_longitude,
+        },
+      })),
+    };
+  }
 )
 (Main);
