@@ -30,7 +30,7 @@ class Main extends Component {
       <div className="expand mdl-grid">
         <div className="map-item-wrapper mdl-cell mdl-cell--6-col">
           <div className="child-inline">
-            <h4>집회 목록</h4>
+            <h4 className="noto">집회 목록</h4>
             <div style={{ float: 'right', margin: '16px 0' }}>
               <RaisedButton
                 style={{...buttonStyles, marginRight: 12}}

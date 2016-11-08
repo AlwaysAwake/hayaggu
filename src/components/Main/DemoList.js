@@ -11,7 +11,7 @@ class DemoList extends Component {
 
     return (
       <div className="demo-list-wrapper">
-        {
+        {demos.length > 0 ?
           demos.map((demo, idx) => {
             return (
               <Card
@@ -35,6 +35,7 @@ class DemoList extends Component {
               </Card>
             );
           })
+          : <h6 className="noto">아직 예정된 집회가 없습니다.</h6>
         }
       </div>
     );
