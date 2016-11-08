@@ -18,6 +18,8 @@ function setDemos(json, nextWeekOffset) {
 export function fetchDemos(nextWeekOffset = 0) {
   return (dispatch, getState) => {
     const weekRange = getWeekRange(new Date(), nextWeekOffset);
+
+    dispatch({ type: ActionTypes.FETCH_DEMOS });
     return fetch(`${baseURL}/demo/list?start=${weekRange.start}&end=${weekRange.end}`)
       .then(checkStatus)
       .then(parseJSON)
