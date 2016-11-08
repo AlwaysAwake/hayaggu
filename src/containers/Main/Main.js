@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import * as Actions from '../../actions/actions';
 import { fixtureDemos } from '../../constants/fixtures';
@@ -16,12 +17,28 @@ class Main extends Component {
   }
 
   render() {
-    const { demos, demoPositions, selectedDemo } = this.props;
+    const { demos, demoPositions, selectedDemo, currentWeekOffset, dispatch } = this.props;
+    const buttonStyles = { display: 'inline-block', margin: 5 };
 
     return (
       <div className="expand mdl-grid">
         <div className="map-item-wrapper mdl-cell mdl-cell--6-col">
-          <h4>집회 목록</h4>
+          <div className="child-inline">
+            <h4>집회 목록</h4>
+            <div style={{ float: 'right', margin: '16px 0' }}>
+              <RaisedButton
+                style={{...buttonStyles, marginRight: 12}}
+                label="전 주로 이동"
+                onTouchTap={() => dispatch(Actions.fetchDemos(currentWeekOffset - 1))}
+              />
+              <RaisedButton
+                style={buttonStyles}
+                label="다음 주로 이동"
+                onTouchTap={() => dispatch(Actions.fetchDemos(currentWeekOffset + 1))}
+              />
+            </div>
+          </div>
+          
           <DemoList demos={demos} onSelectDemo={this.selectDemo} selectedDemo={selectedDemo} />
         </div>
         <div className="map-wrapper mdl-cell mdl-cell--6-col">
@@ -34,6 +51,7 @@ class Main extends Component {
 
 Main.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  currentWeekOffset: PropTypes.number.isRequired,
   demos: PropTypes.array.isRequired,
   selectedDemo: PropTypes.object.isRequired,
 };
@@ -43,6 +61,7 @@ export default connect(
     const { demos, selectedDemo } = state.demos;
 
     return {
+      currentWeekOffset: state.common.currentWeekOffset,
       demos: demos,
       selectedDemo,
       demoPositions: demos.filter(d => selectedDemo.id ? d.id === selectedDemo.id : true).map(demo => ({

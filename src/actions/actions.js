@@ -4,21 +4,24 @@ import { replace } from 'react-router-redux';
 import * as ActionTypes from '../constants/actions';
 import { baseURL } from '../constants/api';
 import { parseJSON, checkStatus } from '../utils/promiseMiddleware';
+import { getWeekRange } from '../utils/time';
 
 
-function setDemos(json) {
+function setDemos(json, nextWeekOffset) {
   return {
     type: ActionTypes.SET_DEMOS,
     demos: json.demo_list,
+    nextWeekOffset,
   };
 }
 
-export function fetchDemos() {
-  return dispatch => {
-    return fetch(`${baseURL}/demo/list`)
+export function fetchDemos(nextWeekOffset = 0) {
+  return (dispatch, getState) => {
+    const weekRange = getWeekRange(new Date(), nextWeekOffset);
+    return fetch(`${baseURL}/demo/list?start=${weekRange.start}&end=${weekRange.end}`)
       .then(checkStatus)
       .then(parseJSON)
-      .then(json => dispatch(setDemos(json)))
+      .then(json => dispatch(setDemos(json, nextWeekOffset)))
       .catch(error => console.error(error));
   };
 }

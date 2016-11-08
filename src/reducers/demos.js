@@ -8,6 +8,9 @@ const demos = (state = initialState, action) => {
     case ActionTypes.SET_DEMOS:
       return { ...state, demos: action.demos };
 
+    case ActionTypes.FETCH_DEMOS:
+      return { ...state, selectedDemo: {} };
+
     case ActionTypes.SELECT_DEMO:
       return { ...state, selectedDemo: action.demo };
 
