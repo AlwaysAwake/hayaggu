@@ -10,7 +10,7 @@ export const convertKoreanFormat = date => {
 
 export const getWeekRange = (date, offset) => {
   return {
-    start: moment(date.getTime() + week * offset).startOf('week').format('YYYY-MM-DD'),
+    start: moment(date.getTime() + week * offset).startOf(offset === 0 ? 'day' : 'week').format('YYYY-MM-DD'),
     end: moment(date.getTime() + week * offset).endOf('week').format('YYYY-MM-DD'),
   };
 }

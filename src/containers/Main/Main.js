@@ -16,8 +16,14 @@ class Main extends Component {
     this.props.dispatch(Actions.selectDemo(demo));
   }
 
+  onMoveWeek(nextWeekOffset) {
+    if (nextWeekOffset >= 0) {
+      this.props.dispatch(Actions.fetchDemos(nextWeekOffset));
+    }
+  }
+
   render() {
-    const { demos, demoPositions, selectedDemo, currentWeekOffset, dispatch } = this.props;
+    const { demos, demoPositions, selectedDemo, currentWeekOffset } = this.props;
     const buttonStyles = { display: 'inline-block', margin: 5 };
 
     return (
@@ -28,13 +34,13 @@ class Main extends Component {
             <div style={{ float: 'right', margin: '16px 0' }}>
               <RaisedButton
                 style={{...buttonStyles, marginRight: 12}}
-                label="전 주로 이동"
-                onTouchTap={() => dispatch(Actions.fetchDemos(currentWeekOffset - 1))}
+                label="이전 주"
+                onTouchTap={() => this.onMoveWeek(currentWeekOffset - 1)}
               />
               <RaisedButton
                 style={buttonStyles}
-                label="다음 주로 이동"
-                onTouchTap={() => dispatch(Actions.fetchDemos(currentWeekOffset + 1))}
+                label="다음 주"
+                onTouchTap={() => this.onMoveWeek(currentWeekOffset + 1)}
               />
             </div>
           </div>
