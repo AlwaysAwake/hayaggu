@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div className="expand">
         <AppBar
-          title={<span style={{ cursor: 'pointer' }}>Hayaggu</span>}
+          title={<span className="noto" style={{ cursor: 'pointer' }}>하야해! 하야꾸!</span>}
           onTitleTouchTap={() => dispatch(push('/'))}
 
           iconElementLeft={<FontIcon className="material-icons" color="#fff" style={{ fontSize: 30, marginTop: 8, marginLeft: 10, marginRight: 6 }}>whatshot</FontIcon>}
