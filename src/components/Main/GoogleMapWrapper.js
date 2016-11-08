@@ -5,8 +5,8 @@ import noop from 'lodash/noop';
 const GettingStartedGoogleMap = withGoogleMap(props => (
   <GoogleMap
     ref={props.onMapLoad}
-    defaultZoom={10}
-    defaultCenter={{ lat: 37.569293, lng: 126.9490233 }}
+    defaultZoom={7}
+    defaultCenter={{ lat: 36.3589795, lng: 127.8878637 }}
     onClick={props.onMapClick}
   >
     {props.markers.map(marker => (

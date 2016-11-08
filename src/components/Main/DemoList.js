@@ -14,8 +14,13 @@ class DemoList extends Component {
           demos.map((demo, idx) => {
             return (
               <Card onClick={() => onSelectDemo(demo)} key={idx} containerStyle={{ marginBottom: 10 }}>
-                <CardTitle title={demo.title} subtitle={convertKoreanFormat(demo.sdate)} />
-                <CardText>
+                <CardTitle
+                  title={demo.title}
+                  subtitle={convertKoreanFormat(demo.sdate)}
+                  style={{ padding: 10 }}
+                  titleStyle={{ fontSize: 18 }}
+                />
+                <CardText style={{ padding: 10 }}>
                   {`장소: ${demo.source}`}
                   <br />
                   {`주최: ${demo.host}`}
