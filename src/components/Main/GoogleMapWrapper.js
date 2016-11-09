@@ -20,10 +20,10 @@ export default class GoogleMapWrapper extends Component {
     return (
       <GettingStartedGoogleMap
         containerElement={
-          <div style={{ height: `100%` }} />
+          <div style={{ height: '100%', minHeight: '711px' }} />
         }
         mapElement={
-          <div style={{ height: `100%` }} />
+          <div style={{ height: '100%', minHeight: '711px' }} />
         }
         onMapLoad={noop}
         onMapClick={noop}
