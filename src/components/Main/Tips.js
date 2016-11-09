@@ -14,10 +14,12 @@ const Tips = ({ isDialogOpened, handleClose }) => {
 
   return (
     <Dialog
+      title="시위 꿀팁"
       actions={actions}
       open={isDialogOpened}
       modal={false}
       onRequestClose={handleClose}
+      autoScrollBodyContent={true}
     >
       Put contents here
     </Dialog>
