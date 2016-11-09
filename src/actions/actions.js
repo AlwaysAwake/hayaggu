@@ -38,3 +38,7 @@ export function selectDemo(clickedDemo) {
     });
   };
 }
+
+export function toggleDialog() {
+  return { type: ActionTypes.TOGGLE_DIALOG };
+}

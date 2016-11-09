@@ -5,10 +5,17 @@ import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import FontIcon from 'material-ui/FontIcon';
 
+import * as Actions from './actions/actions';
+import { Tips } from './components';
+
 
 class App extends Component {
+  toggleDialog = () => {
+    this.props.dispatch(Actions.toggleDialog());
+  }
+
   render() {
-    const { children, dispatch } = this.props;
+    const { children, dispatch, isDialogOpened } = this.props;
 
     return (
       <div className="expand">
@@ -20,6 +27,7 @@ class App extends Component {
           iconElementRight={
             <div style={{ marginTop: 5 }}>
               <FlatButton label="집회 일정 보기" style={{ color: '#fff' }} onTouchTap={() => dispatch(push('/'))} />
+              <FlatButton label="시위 꿀팁" style={{ color: '#fff' }} onTouchTap={() => dispatch(Actions.toggleDialog())} />
             </div>
           }
           style={{ position: 'fixed' }}
@@ -27,6 +35,7 @@ class App extends Component {
         <div className="container">
           {children}
         </div>
+        <Tips isDialogOpened={isDialogOpened} handleClose={this.toggleDialog} />
       </div>
     );
   }
@@ -34,6 +43,11 @@ class App extends Component {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  isDialogOpened: PropTypes.bool.isRequired,
 };
 
-export default connect()(App);
+export default connect(
+  state => ({
+    isDialogOpened: state.common.isDialogOpened,
+  })
+)(App);
