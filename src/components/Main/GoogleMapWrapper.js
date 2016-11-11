@@ -18,10 +18,10 @@ export default class GoogleMapWrapper extends Component {
     return (
       <GettingStartedGoogleMap
         containerElement={
-          <div style={{ height: '100%', minHeight: '711px' }} />
+          <div className="google-map-container" />
         }
         mapElement={
-          <div style={{ height: '100%', minHeight: '711px' }} />
+          <div className="google-map-wrapper" />
         }
         markers={this.props.markers}
         onSelectPin={this.props.onSelectPin}

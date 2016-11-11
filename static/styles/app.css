@@ -61,3 +61,42 @@ html {
   position: fixed;
   right: 0;
 }
+
+@media (max-width: 839px) {
+  .mdl-grid.main-container {
+    flex-flow: column nowrap;
+  }
+
+  .map-item-wrapper {
+    order: 2;
+  }
+
+  .map-wrapper {
+    order: 1;
+    position: relative;
+  }
+
+  .google-map-container, .google-map-wrapper {
+    height: 50%;
+    min-height: 300px;
+  }
+}
+
+@media (min-width: 840px) {
+  .mdl-grid.main-container {
+    flex-flow: row-wrap;
+  }
+
+  .map-item-wrapper {
+    order: 1;
+  }
+
+  .map-wrapper {
+    order: 2;
+  }
+
+  .google-map-container, .google-map-wrapper {
+    height: 100%;
+    min-height: 711px;
+  }
+}

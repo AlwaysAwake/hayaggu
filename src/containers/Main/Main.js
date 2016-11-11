@@ -34,8 +34,8 @@ class Main extends Component {
     const buttonStyles = { display: 'inline-block', margin: 5 };
 
     return (
-      <div className="expand mdl-grid">
-        <div className="map-item-wrapper mdl-cell mdl-cell--6-col">
+      <div className="expand mdl-grid main-container">
+        <div className="map-item-wrapper mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
           <div className="child-inline">
             <h4 className="noto">집회 목록</h4>
             <div style={{ float: 'right', margin: '16px 0' }}>
@@ -54,7 +54,7 @@ class Main extends Component {
           
           <DemoList demos={demos} onSelectDemo={this.selectDemo} selectedDemo={selectedDemo} />
         </div>
-        <div className="map-wrapper mdl-cell mdl-cell--6-col">
+        <div className="map-wrapper mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
           <GoogleMapWrapper
             onSelectPin={this.selectDemoById}
             markers={demoPositions}
