@@ -53,3 +53,22 @@ export function selectDemoById(id) {
 export function toggleDialog() {
   return { type: ActionTypes.TOGGLE_DIALOG };
 }
+
+function setComments(json) {
+  return {
+    type: ActionTypes.SET_COMMENTS,
+    comments: json.comments,
+  };
+}
+
+export function fetchComments(id) {
+  return dispatch => {
+    dispatch({ type: ActionTypes.FETCH_COMMENTS });
+    
+    return fetch(`${baseURL}/comment/${id}`)
+      .then(checkStatus)
+      .then(parseJSON)
+      .then(json => dispatch(setComments(json, id)))
+      .catch(error => console.error(error));
+  };
+}
