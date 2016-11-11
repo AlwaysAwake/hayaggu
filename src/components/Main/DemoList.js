@@ -21,14 +21,14 @@ class DemoList extends Component {
                 containerStyle={{ marginBottom: 10, padding: 0, backgroundColor: selectedDemo.id === demo.id && blue500, cursor: 'pointer' }}
               >
                 <CardTitle
-                  title={demo.title}
+                  title={demo.source}
                   subtitle={convertKoreanFormat(demo.sdate)}
                   style={{ padding: 10 }}
                   titleStyle={{ fontSize: 18, color: selectedDemo.id === demo.id && 'rgba(255, 255, 255, 0.870588)', lineHeight: 'normal' }}
                   subtitleStyle={{ color: selectedDemo.id === demo.id ? 'rgba(255, 255, 255, 0.541176)' : 'rgba(0, 0, 0, 0.541176)' }}
                 />
                 <CardText style={{ padding: 10, paddingTop: 0, color: selectedDemo.id === demo.id && 'rgba(255, 255, 255, 0.870588)' }}>
-                  {`장소: ${demo.source}`}
+                  {`집회 명: ${demo.title}`}
                   <br />
                   {`주최: ${demo.host}`}
                 </CardText>
