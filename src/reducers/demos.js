@@ -14,6 +14,16 @@ const demos = (state = initialState, action) => {
     case ActionTypes.SELECT_DEMO:
       return { ...state, selectedDemo: action.demo };
 
+    case ActionTypes.SELECT_DEMO_BY_ID:
+      return {
+        ...state,
+        selectedDemo: action.demo,
+        demos: [
+          action.demo,
+          ...state.demos.filter(d => d.id !== action.demo.id),
+        ],
+      };
+
     default:
       return state;
   }

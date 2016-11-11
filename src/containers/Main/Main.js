@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import { animateScroll } from 'react-scroll';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import * as Actions from '../../actions/actions';
@@ -14,6 +15,12 @@ class Main extends Component {
 
   selectDemo = (demo) => {
     this.props.dispatch(Actions.selectDemo(demo));
+  }
+
+  selectDemoById = (id) => {
+    this.props.dispatch(Actions.selectDemoById(id));
+    console.log(animateScroll);
+    animateScroll.scrollTo(0);
   }
 
   onMoveWeek(nextWeekOffset) {
@@ -48,7 +55,10 @@ class Main extends Component {
           <DemoList demos={demos} onSelectDemo={this.selectDemo} selectedDemo={selectedDemo} />
         </div>
         <div className="map-wrapper mdl-cell mdl-cell--6-col">
-          <GoogleMapWrapper markers={demoPositions} />
+          <GoogleMapWrapper
+            onSelectPin={this.selectDemoById}
+            markers={demoPositions}
+          />
         </div>
       </div>
     );

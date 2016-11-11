@@ -39,6 +39,17 @@ export function selectDemo(clickedDemo) {
   };
 }
 
+export function selectDemoById(id) {
+  return (dispatch, getState) => {
+    const { demos: { demos } } = getState();
+
+    return dispatch({
+      type: ActionTypes.SELECT_DEMO_BY_ID,
+      demo: demos.find(d => d.id === id),
+    });
+  };
+}
+
 export function toggleDialog() {
   return { type: ActionTypes.TOGGLE_DIALOG };
 }
