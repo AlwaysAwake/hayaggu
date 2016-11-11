@@ -21,7 +21,7 @@ class DemoList extends Component {
                 containerStyle={{ marginBottom: 10, padding: 0, backgroundColor: selectedDemo.id === demo.id && blue500, cursor: 'pointer' }}
               >
                 <CardTitle
-                  title={demo.source}
+                  title={`[${demo.region}] ${demo.source}`}
                   subtitle={convertKoreanFormat(demo.sdate)}
                   style={{ padding: 10 }}
                   titleStyle={{ fontSize: 18, color: selectedDemo.id === demo.id && 'rgba(255, 255, 255, 0.870588)', lineHeight: 'normal' }}
