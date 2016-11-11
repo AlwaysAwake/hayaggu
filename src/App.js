@@ -26,6 +26,7 @@ class App extends Component {
           iconElementLeft={<FontIcon className="material-icons" color="#fff" style={{ fontSize: 30, marginTop: 8, marginLeft: 10, marginRight: 6 }}>whatshot</FontIcon>}
           iconElementRight={
             <div style={{ marginTop: 5 }}>
+              <span style={{ color: '#fff' }}>집회 제보: koreastandupnow@gmail.com</span>
               <FlatButton label="시위 꿀팁" style={{ color: '#fff' }} onTouchTap={() => dispatch(Actions.toggleDialog())} />
             </div>
           }
