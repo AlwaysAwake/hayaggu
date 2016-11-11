@@ -59,3 +59,8 @@ html {
   margin: 0 auto;
   padding-top: 60px;
 }
+
+.map-wrapper {
+  position: fixed;
+  right: 0;
+}
