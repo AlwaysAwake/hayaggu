@@ -78,7 +78,7 @@ html {
 
   .google-map-container, .google-map-wrapper {
     height: 50%;
-    min-height: 300px;
+    min-height: 250px;
   }
 }
 
