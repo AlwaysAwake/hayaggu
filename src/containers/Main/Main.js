@@ -5,7 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import * as Actions from '../../actions/actions';
 import { fixtureDemos } from '../../constants/fixtures';
-import { GoogleMapWrapper, DemoList } from '../../components';
+import { GoogleMapWrapper, DemoList, CommentList } from '../../components';
 
 
 class Main extends Component {
@@ -19,7 +19,6 @@ class Main extends Component {
 
   selectDemoById = (id) => {
     this.props.dispatch(Actions.selectDemoById(id));
-    console.log(animateScroll);
     animateScroll.scrollTo(0);
   }
 
@@ -30,7 +29,7 @@ class Main extends Component {
   }
 
   render() {
-    const { demos, demoPositions, selectedDemo, currentWeekOffset } = this.props;
+    const { demos, comments, demoPositions, selectedDemo, currentWeekOffset, dispatch } = this.props;
     const buttonStyles = { display: 'inline-block', margin: 5 };
 
     return (
@@ -51,8 +50,16 @@ class Main extends Component {
               />
             </div>
           </div>
-          
           <DemoList demos={demos} onSelectDemo={this.selectDemo} selectedDemo={selectedDemo} />
+          {selectedDemo.id
+            ? (
+              <CommentList
+                comments={comments}
+                demoId={selectedDemo.id}
+                onWriteComment={({ id, contents }) => dispatch(Actions.writeComment({ id, contents }))}
+              />
+            ) : null
+          }
         </div>
         <div className="map-wrapper mdl-cell mdl-cell--6-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
           <GoogleMapWrapper
@@ -69,6 +76,7 @@ Main.propTypes = {
   dispatch: PropTypes.func.isRequired,
   currentWeekOffset: PropTypes.number.isRequired,
   demos: PropTypes.array.isRequired,
+  comments: PropTypes.array.isRequired,
   selectedDemo: PropTypes.object.isRequired,
 };
 
@@ -78,7 +86,8 @@ export default connect(
 
     return {
       currentWeekOffset: state.common.currentWeekOffset,
-      demos: demos,
+      demos: selectedDemo.id ? [selectedDemo] : demos,
+      comments: state.comments,
       selectedDemo,
       demoPositions: demos.filter(d => selectedDemo.id ? d.id === selectedDemo.id : true).map(demo => ({
         key: demo.id,
