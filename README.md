@@ -42,12 +42,13 @@ Stand up now, for our country.
 Facebook에서 만든 컴포넌트 단위로 뷰를 구성할 수 있도록 만든 라이브러리.  
 ES5 / ES6에서 각자 다른 방식으로 컴포넌트를 생성할 수 있도록 도와준다.  
 본 프로젝트에서 사용한 ES6에서는 상속받아 사용할 수 있는 부모 클래스가 라이브러리 내에 정의되어있음.  
+JSX라는 JavaScript와 Markup이 혼재되어 있는 듯이 보이는 문법을 사용하지만 사실 다 그냥 JavaScript임.  
 각 컴포넌트 별로 Props, State라는 두 가지 값을 지닌다.  
 * Props  
   - 부모 컴포넌트로부터 물려받으며, 스스로 바꿀 수 없는 속성(값)  
 * State  
   - 스스로 바꿀 수 있는 속성(값)  
-  
+
 모든 컴포넌트는 각자가 가지고 있는 Props나 State가 바뀌면 '기본적으로' Re-render되도록 구성되어 있다.  
 
 ## [Redux](http://redux.js.org/)  
