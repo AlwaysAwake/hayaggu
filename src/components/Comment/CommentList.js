@@ -69,11 +69,11 @@ class CommentList extends Component {
                   this.props.comments.map((comment, idx) => {
                     return (
                       <div style={{ overflow: 'auto' }} key={idx}>
-                        <div style={{ width: '80%', display: 'inline-block' }}>
-                          <h6 className="noto dont-break-out" style={{ margin: 8, fontSize: '14px' }}>{comment.content}</h6>
+                        <div className="comment-content">
+                          <h6 className="noto dont-break-out">{comment.content}</h6>
                         </div>
-                        <div style={{ width: '20%', display: 'inline-block', verticalAlign: 'top' }}>
-                          <h6 className="noto dont-break-out" style={{ margin: 8, fontSize: '14px' }}>{convertKoreanFormat(comment.cdate)}</h6>
+                        <div className="comment-date">
+                          <h6 className="noto dont-break-out">{convertKoreanFormat(comment.cdate)}</h6>
                         </div>
                         <Divider />
                       </div>

@@ -88,6 +88,28 @@ html {
   display: inline-block;
 }
 
+.comment-content {
+  width: 80%;
+  display: inline-block;
+}
+
+.comment-content > h6 {
+  margin: 8px;
+  font-size: 15px;
+}
+
+.comment-date {
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+  text-align: right;
+}
+
+.comment-date > h6 {
+  margin: 8px;
+  font-size: 14px;
+}
+
 /* Media queries */
 @media (max-width: 499px) {
   .appbar-button-wrapper {
@@ -116,6 +138,17 @@ html {
   
   .report-email {
     display: none;
+  }
+
+  .comment-content {
+    width: 100%;
+    display: block;
+  }
+
+  .comment-date {
+    width: 100%;
+    display: block;
+    text-align: left;
   }
 }
 
