@@ -74,6 +74,16 @@ html {
   right: 0;
 }
 
+.toilet-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.toilet-container > img {
+  width: 100%;
+}
+
+/* Media queries */
 @media (max-width: 839px) {
   .mdl-grid.main-container {
     flex-flow: column nowrap;

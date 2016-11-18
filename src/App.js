@@ -26,6 +26,7 @@ class App extends Component {
 
   render() {
     const { children, dispatch, isDialogOpened } = this.props;
+    const appBarButtonStyles = { color: '#fff' };
 
     return (
       <div className="expand">
@@ -36,7 +37,8 @@ class App extends Component {
           iconElementRight={
             <div style={{ marginTop: 5 }}>
               <span style={{ color: '#fff' }}>집회 제보: koreastandupnow@gmail.com</span>
-              <FlatButton label="시위 꿀팁" style={{ color: '#fff' }} onTouchTap={() => dispatch(Actions.toggleDialog())} />
+              <FlatButton label="시위 꿀팁" style={appBarButtonStyles} onTouchTap={() => dispatch(Actions.toggleDialog())} />
+              <FlatButton label="화장실 위치" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/toilet'))} />
             </div>
           }
           style={{ position: 'fixed', backgroundColor: cyan500 }}
@@ -45,7 +47,14 @@ class App extends Component {
           {children}
         </div>
         <Drawer open={this.state.drawerOpened}>
-          <MenuItem onTouchTap={() => dispatch(Actions.toggleDialog())}>시위 꿀팁</MenuItem>
+          <MenuItem onTouchTap={() => {
+            this.setState({ drawerOpened: false });
+            return dispatch(Actions.toggleDialog());
+          }}>시위 꿀팁</MenuItem>
+          <MenuItem onTouchTap={() => {
+            this.setState({ drawerOpened: false });
+            return dispatch(push('/toilet'));
+          }}>화장실 위치</MenuItem>
         </Drawer>
         <Tips isDialogOpened={isDialogOpened} handleClose={this.toggleDialog} />
       </div>
