@@ -4,40 +4,36 @@ import Divider from 'material-ui/Divider';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import { convertKoreanFormat } from '../../utils/time';
+
 
 class CommentList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      contents: '',
+      content: '',
     };
   }
 
   onWriteComment() {
-    if (this.state.contents.length > 255) {
+    if (this.state.content.length > 255) {
       alert("댓글의 길이가 너무 깁니다.");
       return;
     }
-    if (this.state.contents !== '') {
-      this.props.onWriteComment({
-        id: this.props.demoId,
-        contents: this.state.contents,
-      });
-      this.setState({ contents: '' });
+    if (this.state.content !== '') {
+      this.props.onWriteComment({ content: this.state.content });
+      this.setState({ content: '' });
     }
   }
 
   onPressEnterComment(e) {
-    if (this.state.contents !== '' && e.keyCode === 13) {
-      if (this.state.contents.length > 255) {
+    if (this.state.content !== '' && e.keyCode === 13) {
+      if (this.state.content.length > 255) {
         alert("댓글의 길이가 너무 깁니다.");
         return;
       }
-      this.props.onWriteComment({
-        id: this.props.demoId,
-        contents: this.state.contents,
-      });
-      this.setState({ contents: '' });
+      this.props.onWriteComment({ content: this.state.content });
+      this.setState({ content: '' });
     }
   }
 
@@ -53,9 +49,9 @@ class CommentList extends Component {
           <TextField
             floatingLabelText="댓글을 작성해주세요"
             onKeyUp={e => this.onPressEnterComment(e)}
-            onChange={e => this.setState({ contents: e.target.value })}
+            onChange={e => this.setState({ content: e.target.value })}
             style={{ width: '100%', display: 'inline-block' }}
-            value={this.state.contents}
+            value={this.state.content}
           />
           <RaisedButton
             label="댓글 작성"
@@ -72,8 +68,13 @@ class CommentList extends Component {
                 {
                   this.props.comments.map((comment, idx) => {
                     return (
-                      <div key={idx}>
-                        <h6 className="noto dont-break-out" style={{ margin: 8 }}>{comment.content}</h6>
+                      <div style={{ overflow: 'auto' }} key={idx}>
+                        <div style={{ width: '80%', display: 'inline-block' }}>
+                          <h6 className="noto dont-break-out" style={{ margin: 8, fontSize: '14px' }}>{comment.content}</h6>
+                        </div>
+                        <div style={{ width: '20%', display: 'inline-block', verticalAlign: 'top' }}>
+                          <h6 className="noto dont-break-out" style={{ margin: 8, fontSize: '14px' }}>{convertKoreanFormat(comment.cdate)}</h6>
+                        </div>
                         <Divider />
                       </div>
                     );
@@ -91,7 +92,6 @@ class CommentList extends Component {
 CommentList.propTypes = {
   onWriteComment: PropTypes.func.isRequired,
   comments: PropTypes.array.isRequired,
-  demoId: PropTypes.number.isRequired,
 };
 
 export default CommentList;

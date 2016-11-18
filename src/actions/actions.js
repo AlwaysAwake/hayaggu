@@ -2,7 +2,8 @@ import fetch from 'isomorphic-fetch';
 import { replace } from 'react-router-redux';
 
 import * as ActionTypes from '../constants/actions';
-import { baseURL } from '../constants/api';
+import { baseURL, commentFetchCount } from '../constants/api';
+
 import { parseJSON, checkStatus } from '../utils/promiseMiddleware';
 import { getWeekRange } from '../utils/time';
 import { searchParams } from '../utils/formatter';
@@ -33,7 +34,6 @@ export function selectDemo(clickedDemo) {
   return (dispatch, getState) => {
     const { demos: { demos, selectedDemo } } = getState();
 
-    dispatch(fetchComments(clickedDemo.id));
     return dispatch({
       type: ActionTypes.SELECT_DEMO,
       demo: selectedDemo.id === clickedDemo.id ? {} : demos.find(demo => demo.id === clickedDemo.id),
@@ -45,7 +45,6 @@ export function selectDemoById(id) {
   return (dispatch, getState) => {
     const { demos: { demos } } = getState();
 
-    dispatch(fetchComments(id));
     return dispatch({
       type: ActionTypes.SELECT_DEMO_BY_ID,
       demo: demos.find(d => d.id === id),
@@ -64,14 +63,16 @@ function setComments(json) {
   };
 }
 
-export function fetchComments(id) {
-  return dispatch => {
+export function fetchComments() {
+  return (dispatch, getState) => {
+    const { comments: { commentFetchOffset } } = getState();
+
     dispatch({ type: ActionTypes.FETCH_COMMENTS });
     
-    return fetch(`${baseURL}/comment/list?demo_id=${id}`)
+    return fetch(`${baseURL}/comment/list?count=${commentFetchCount}&offset=${commentFetchOffset}`)
       .then(checkStatus)
       .then(parseJSON)
-      .then(json => dispatch(setComments(json, id)))
+      .then(json => dispatch(setComments(json)))
       .catch(error => console.error(error));
   };
 }
@@ -83,7 +84,7 @@ export function addComment(json) {
   };
 }
 
-export function writeComment({ id, contents }) {
+export function writeComment({ content }) {
   return dispatch => {
     dispatch({ type: ActionTypes.WRITE_COMMENT });
 
@@ -91,9 +92,9 @@ export function writeComment({ id, contents }) {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: searchParams({
-        demo_id: id,
+        demo_id: 1,
         writer: 'Hayaggu',
-        content: contents,
+        content,
       }),
     })
       .then(checkStatus)

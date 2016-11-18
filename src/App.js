@@ -37,7 +37,7 @@ class App extends Component {
           iconElementRight={
             <div className="appbar-button-wrapper" style={{ marginTop: 5 }}>
               <span className="report-email">집회 제보: koreastandupnow@gmail.com</span>
-              <FlatButton label="분노 표출" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/comment'))} />
+              <FlatButton label="분노 표출" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/comments'))} />
               <FlatButton label="시위 꿀팁" style={appBarButtonStyles} onTouchTap={() => dispatch(Actions.toggleDialog())} />
               <FlatButton label="화장실 위치" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/toilet'))} />
             </div>
@@ -55,7 +55,7 @@ class App extends Component {
           }}>집회 목록</MenuItem>
           <MenuItem onTouchTap={() => {
             this.setState({ drawerOpened: false });
-            return dispatch(push('/comment'));
+            return dispatch(push('/comments'));
           }}>분노 표출</MenuItem>
           <MenuItem onTouchTap={() => {
             this.setState({ drawerOpened: false });
