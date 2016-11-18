@@ -35,8 +35,9 @@ class App extends Component {
           onTitleTouchTap={() => dispatch(push('/'))}
           onLeftIconButtonTouchTap={() => this.setState({ drawerOpened: !this.state.drawerOpened })}
           iconElementRight={
-            <div style={{ marginTop: 5 }}>
-              <span style={{ color: '#fff' }}>집회 제보: koreastandupnow@gmail.com</span>
+            <div className="appbar-button-wrapper" style={{ marginTop: 5 }}>
+              <span className="report-email">집회 제보: koreastandupnow@gmail.com</span>
+              <FlatButton label="집회 목록" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/'))} />
               <FlatButton label="시위 꿀팁" style={appBarButtonStyles} onTouchTap={() => dispatch(Actions.toggleDialog())} />
               <FlatButton label="화장실 위치" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/toilet'))} />
             </div>
@@ -47,6 +48,10 @@ class App extends Component {
           {children}
         </div>
         <Drawer open={this.state.drawerOpened}>
+          <MenuItem onTouchTap={() => {
+            this.setState({ drawerOpened: false });
+            return dispatch(push('/'));
+          }}>집회 목록</MenuItem>
           <MenuItem onTouchTap={() => {
             this.setState({ drawerOpened: false });
             return dispatch(Actions.toggleDialog());

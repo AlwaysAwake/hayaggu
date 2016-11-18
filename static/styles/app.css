@@ -83,7 +83,18 @@ html {
   width: 100%;
 }
 
+.report-email {
+  color: #fff;
+  display: inline-block;
+}
+
 /* Media queries */
+@media (max-width: 499px) {
+  .appbar-button-wrapper {
+    display: none;
+  }
+}
+
 @media (max-width: 839px) {
   .mdl-grid.main-container {
     flex-flow: column nowrap;
@@ -101,6 +112,10 @@ html {
   .google-map-container, .google-map-wrapper {
     height: 50%;
     min-height: 250px;
+  }
+  
+  .report-email {
+    display: none;
   }
 }
 
