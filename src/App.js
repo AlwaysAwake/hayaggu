@@ -48,6 +48,7 @@ class App extends Component {
           {children}
         </div>
         <Drawer open={this.state.drawerOpened}>
+          <MenuItem onTouchTap={() => this.setState({ drawerOpened: false })}>닫기</MenuItem>
           <MenuItem onTouchTap={() => {
             this.setState({ drawerOpened: false });
             return dispatch(push('/'));
