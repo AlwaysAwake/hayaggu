@@ -60,7 +60,7 @@ class CommentList extends Component {
             style={buttonStyles}
           />
         </div>
-        <div className="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+        <div className="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone" style={{ maxWidth: '1010px' }}>
           <h4 className="noto">댓글 목록</h4>
           {this.props.comments.length > 0
             ? (

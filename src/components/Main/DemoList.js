@@ -30,7 +30,7 @@ class DemoList extends Component {
                 <CardText style={{ padding: 10, paddingTop: 0, color: selectedDemo.id === demo.id && 'rgba(255, 255, 255, 0.870588)' }}>
                   {`집회 명: ${demo.title}`}
                   <br />
-                  {`주최: ${demo.host}`}
+                  {demo.host ? `주최: ${demo.host}` : null}
                 </CardText>
               </Card>
             );
