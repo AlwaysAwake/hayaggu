@@ -74,7 +74,7 @@ html {
   right: 0;
 }
 
-.toilet-container {
+.toilet-container, .tips-container {
   width: 90%;
   margin: 0 auto;
 }

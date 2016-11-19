@@ -20,12 +20,8 @@ class App extends Component {
     };
   }
 
-  toggleDialog = () => {
-    this.props.dispatch(Actions.toggleDialog());
-  }
-
   render() {
-    const { children, dispatch, isDialogOpened } = this.props;
+    const { children, dispatch } = this.props;
     const appBarButtonStyles = { color: '#fff' };
 
     return (
@@ -38,7 +34,7 @@ class App extends Component {
             <div className="appbar-button-wrapper" style={{ marginTop: 5 }}>
               <span className="report-email">집회 제보: koreastandupnow@gmail.com</span>
               <FlatButton label="분노 표출" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/comments'))} />
-              <FlatButton label="시위 꿀팁" style={appBarButtonStyles} onTouchTap={() => dispatch(Actions.toggleDialog())} />
+              <FlatButton label="시위 꿀팁" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/tips'))} />
               <FlatButton label="화장실 위치" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/toilet'))} />
             </div>
           }
@@ -48,7 +44,7 @@ class App extends Component {
           {children}
         </div>
         <Drawer open={this.state.drawerOpened}>
-          <MenuItem onTouchTap={() => this.setState({ drawerOpened: false })}>닫기</MenuItem>
+          <MenuItem onTouchTap={() => this.setState({ drawerOpened: false })}>메뉴 닫기</MenuItem>
           <MenuItem onTouchTap={() => {
             this.setState({ drawerOpened: false });
             return dispatch(push('/'));
@@ -59,14 +55,13 @@ class App extends Component {
           }}>분노 표출</MenuItem>
           <MenuItem onTouchTap={() => {
             this.setState({ drawerOpened: false });
-            return dispatch(Actions.toggleDialog());
+            return dispatch(push('/tips'));
           }}>시위 꿀팁</MenuItem>
           <MenuItem onTouchTap={() => {
             this.setState({ drawerOpened: false });
             return dispatch(push('/toilet'));
           }}>화장실 위치</MenuItem>
         </Drawer>
-        <Tips isDialogOpened={isDialogOpened} handleClose={this.toggleDialog} />
       </div>
     );
   }
@@ -74,11 +69,6 @@ class App extends Component {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  isDialogOpened: PropTypes.bool.isRequired,
 };
 
-export default connect(
-  state => ({
-    isDialogOpened: state.common.isDialogOpened,
-  })
-)(App);
+export default connect()(App);

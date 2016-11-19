@@ -52,10 +52,6 @@ export function selectDemoById(id) {
   };
 }
 
-export function toggleDialog() {
-  return { type: ActionTypes.TOGGLE_DIALOG };
-}
-
 function setComments(json) {
   return {
     type: ActionTypes.SET_COMMENTS,

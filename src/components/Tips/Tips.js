@@ -1,26 +1,9 @@
-import React, { PropTypes } from 'react';
-import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
+import React from 'react';
 
 
-const Tips = ({ isDialogOpened, handleClose }) => {
-  const actions = [
-    <FlatButton
-      label="닫기"
-      primary={true}
-      onTouchTap={handleClose}
-    />,
-  ];
-
+const Tips = () => {
   return (
-    <Dialog
-      title="시위 꿀팁"
-      actions={actions}
-      open={isDialogOpened}
-      modal={false}
-      onRequestClose={handleClose}
-      autoScrollBodyContent={true}
-    >
+    <div className="tips-container">
       <div className="cell">
         <h3 id="-">준비물</h3>
         <p>시위에 참가 할때 백팩에 이런 것들을 담아가면 도움이 된다고 합니다 </p>
@@ -170,13 +153,8 @@ const Tips = ({ isDialogOpened, handleClose }) => {
           </li>
         </ol>
       </div>
-    </Dialog>
+    </div>
   );
 }
-
-Tips.propTypes = {
-  handleClose: PropTypes.func.isRequired,
-  isDialogOpened: PropTypes.bool.isRequired,
-};
 
 export default Tips;
