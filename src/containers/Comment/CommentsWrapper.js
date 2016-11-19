@@ -39,7 +39,7 @@ class CommentsWrapper extends Component {
     const { comments, dispatch, isFetching, noMoreComment } = this.props;
 
     return (
-      <div className="comments-wrapper">
+      <div className="comments-container">
         <CommentList
           comments={comments}
           onWriteComment={({ content }) => dispatch(Actions.writeComment({ content }))}

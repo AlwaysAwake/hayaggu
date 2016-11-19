@@ -88,6 +88,12 @@ html {
   display: inline-block;
 }
 
+.comments-container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1010px;
+}
+
 .comment-content {
   width: 80%;
   display: inline-block;
