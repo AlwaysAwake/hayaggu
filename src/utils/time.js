@@ -5,7 +5,7 @@ import { week } from '../constants/formats';
 
 const clientTimezone = 'Etc/UTC';
 export const convertKoreanFormat = date => {
-  return moment.tz(date, clientTimezone).format('YYYY년 M월 D일 h:mmA');
+  return moment.tz(date, clientTimezone).format('YYYY년 M월 D일 hh:mmA');
 }
 
 export const getWeekRange = (date, offset) => {
