@@ -9,7 +9,7 @@ import FontIcon from 'material-ui/FontIcon';
 import { cyan500 } from 'material-ui/styles/colors';
 
 import * as Actions from './actions/actions';
-import { Tips } from './components';
+import { Tips, Credits } from './components';
 
 // iconElementLeft={<FontIcon className="material-icons" color="#fff" style={{ fontSize: 30, marginTop: 8, marginLeft: 10, marginRight: 6 }}>whatshot</FontIcon>}
 class App extends Component {
@@ -61,6 +61,7 @@ class App extends Component {
             this.setState({ drawerOpened: false });
             return dispatch(push('/toilet'));
           }}>싸보그라</MenuItem>
+          <Credits />
         </Drawer>
       </div>
     );

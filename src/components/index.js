@@ -1,3 +1,6 @@
+/* Common components */
+export Credits from './Common/Credits';
+
 /* Main components */
 export GoogleMapWrapper from './Main/GoogleMapWrapper';
 export DemoList from './Main/DemoList';
