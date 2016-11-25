@@ -127,10 +127,11 @@ html {
 
 .credits-container > img {
   width: 100%;
+  max-width: 162px;
 }
 
 .credits-container > h6 {
-  margin-top: -30px;
+  margin-top: -20px;
   font-size: 14px;
 }
 
