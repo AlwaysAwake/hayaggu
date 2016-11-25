@@ -121,17 +121,18 @@ html {
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 20px;
+  padding-bottom: 5px;
   margin: 0 auto;
 }
 
 .credits-container > img {
   width: 100%;
-  max-width: 162px;
+  max-width: 180px;
 }
 
 .credits-container > h6 {
-  margin-top: -20px;
+  margin-top: -10px;
+  margin-bottom: 0;
   font-size: 14px;
 }
 
@@ -241,8 +242,8 @@ html {
   }
 }
 
-@media (max-height: 490px) {
+@media (max-height: 480px) {
   .credits-container {
-    display: none;
+    /* display: none; */
   }
 }
