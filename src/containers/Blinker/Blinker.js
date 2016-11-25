@@ -9,16 +9,13 @@ import * as Actions from '../../actions/actions';
 const requestFullScreen = () => {
   const docElm = document.documentElement;
   if (docElm.requestFullscreen) {
-      docElm.requestFullscreen();
-  }
-  else if (docElm.mozRequestFullScreen) {
-      docElm.mozRequestFullScreen();
-  }
-  else if (docElm.webkitRequestFullScreen) {
-      docElm.webkitRequestFullScreen();
-  }
-  else if (docElm.msRequestFullscreen) {
-      docElm.msRequestFullscreen();
+    docElm.requestFullscreen();
+  } else if (docElm.mozRequestFullScreen) {
+    docElm.mozRequestFullScreen();
+  } else if (docElm.webkitRequestFullScreen) {
+    docElm.webkitRequestFullScreen();
+  } else if (docElm.msRequestFullscreen) {
+    docElm.msRequestFullscreen();
   }
 }
 
