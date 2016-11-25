@@ -56,6 +56,8 @@ class Blinker extends Component {
       <div className="blinker-container">
         <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+            <h4>전광판을 시위에서 활용해보세요.</h4>
+            <h6>액정이 꺼질 수 있으니 액정을 꺼지지 않도록 설정하세요.</h6>
             <TextField
               floatingLabelText={`전광판에 띄울 문구를 작성해주세요. (${maximumCatchwordLength}자 이내)`}
               onChange={e => this.setState({ catchwordText: e.target.value })}
