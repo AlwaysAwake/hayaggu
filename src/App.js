@@ -43,6 +43,7 @@ class App extends Component {
               </Badge>
               <FlatButton label="보고가그라" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/tips'))} />
               <FlatButton label="싸보그라" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/toilet'))} />
+              <FlatButton label="전광판" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/blinker'))} />
             </div>
           }
           style={{ position: 'fixed', backgroundColor: cyan500 }}
@@ -68,6 +69,10 @@ class App extends Component {
             this.setState({ drawerOpened: false });
             return dispatch(push('/toilet'));
           }}>싸보그라</MenuItem>
+          <MenuItem onTouchTap={() => {
+            this.setState({ drawerOpened: false });
+            return dispatch(push('/blinker'));
+          }}>전광판</MenuItem>
           <Credits />
         </Drawer>
       </div>

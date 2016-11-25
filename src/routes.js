@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './App';
-import { Main, CommentsWrapper } from './containers';
+import { Main, CommentsWrapper, Blinker } from './containers';
 import { Tips, ToiletMap } from './components';
 
 
@@ -12,5 +12,6 @@ export default (
     <Route path="comments" component={CommentsWrapper} />
     <Route path="tips" component={Tips} />
     <Route path="toilet" component={ToiletMap} />
+    <Route path="blinker" component={Blinker} />
   </Route>
 );

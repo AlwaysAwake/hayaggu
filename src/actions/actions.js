@@ -124,3 +124,34 @@ export function writeComment({ content }) {
       .catch(error => console.error(error));
   };
 }
+
+function setCatchwords(json) {
+  return {
+    type: ActionTypes.SET_CATCHWORDS,
+    catchwords: json.blinkers,
+  };
+}
+
+export function fetchCatchwords() {
+  return dispatch => {
+    dispatch({ type: ActionTypes.FETCH_CATCHWORDS });
+
+    return fetch(`${baseURL}/blinker/list`)
+      .then(checkStatus)
+      .then(parseJSON)
+      .then(json => dispatch(setCatchwords(json)))
+      .catch(error => console.error(error));
+  };
+}
+
+export function addCatchwordCount({ content }) {
+  return dispatch => {
+    dispatch({ type: ActionTypes.ADD_CATCHWORD_COUNT });
+
+    return fetch(`${baseURL}/blinker/new`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: searchParams({ content }),
+    });
+  }
+}
