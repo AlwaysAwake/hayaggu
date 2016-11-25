@@ -151,6 +151,7 @@ html {
   display: none;
   z-index: 9999;
   background-color: #000;
+  text-align: center;
 }
 
 #blinker.active {
@@ -161,6 +162,7 @@ html {
 
 #blinker > span {
   font-size: 100px;
+  text-align: center;
   line-height: 1;
   color: #fff;
   -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
