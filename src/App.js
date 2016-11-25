@@ -5,13 +5,14 @@ import AppBar from 'material-ui/AppBar';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
+import Badge from 'material-ui/Badge';
 import FontIcon from 'material-ui/FontIcon';
 import { cyan500 } from 'material-ui/styles/colors';
 
 import * as Actions from './actions/actions';
 import { Tips, Credits } from './components';
 
-// iconElementLeft={<FontIcon className="material-icons" color="#fff" style={{ fontSize: 30, marginTop: 8, marginLeft: 10, marginRight: 6 }}>whatshot</FontIcon>}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -20,8 +21,12 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.dispatch(Actions.checkRecentComments());
+  }
+
   render() {
-    const { children, dispatch } = this.props;
+    const { children, dispatch, recentCommentExist } = this.props;
     const appBarButtonStyles = { color: '#fff' };
 
     return (
@@ -33,7 +38,9 @@ class App extends Component {
           iconElementRight={
             <div className="appbar-button-wrapper" style={{ marginTop: 5 }}>
               <span className="report-email">집회 제보: koreastandupnow@gmail.com</span>
-              <FlatButton label="써보그라" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/comments'))} />
+              <Badge badgeContent="N" secondary={true} style={{ padding: 0 }} badgeStyle={{ top: -5, display: recentCommentExist ? 'flex' : 'none' }}>
+                <FlatButton label="써보그라" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/comments'))} />
+              </Badge>
               <FlatButton label="보고가그라" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/tips'))} />
               <FlatButton label="싸보그라" style={appBarButtonStyles} onTouchTap={() => dispatch(push('/toilet'))} />
             </div>
@@ -70,6 +77,11 @@ class App extends Component {
 
 App.propTypes = {
   dispatch: PropTypes.func.isRequired,
+  recentCommentExist: PropTypes.bool.isRequired,
 };
 
-export default connect()(App);
+export default connect(
+  state => ({
+    recentCommentExist: state.common.recentCommentExist,
+  })
+)(App);

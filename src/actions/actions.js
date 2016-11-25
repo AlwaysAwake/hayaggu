@@ -1,13 +1,38 @@
 import fetch from 'isomorphic-fetch';
 import { replace } from 'react-router-redux';
+import noop from 'lodash/noop';
 
 import * as ActionTypes from '../constants/actions';
 import { baseURL, commentFetchCount } from '../constants/api';
 
 import { parseJSON, checkStatus } from '../utils/promiseMiddleware';
-import { getWeekRange } from '../utils/time';
+import { getWeekRange, checkRecentCommentExists } from '../utils/time';
 import { searchParams } from '../utils/formatter';
 
+
+function setRecentCommentExist() {
+  return { type: ActionTypes.SET_RECENT_COMMENT_EXIST };
+}
+
+export function clearRecentCommentExist() {
+  return { type: ActionTypes.CLEAR_RECENT_COMMENT_EXIST };
+}
+
+export function checkRecentComments() {
+  return dispatch => {
+    dispatch({ type: ActionTypes.CHECK_RECENT_COMMENTS });
+
+    return fetch(`${baseURL}/comment/list?count=1&offset=0`)
+      .then(checkStatus)
+      .then(parseJSON)
+      .then(json =>
+        json.comments.length >= 1 && checkRecentCommentExists(json.comments[0].cdate)
+          ? dispatch(setRecentCommentExist())
+          : noop
+      )
+      .catch(error => console.error(error));
+  };
+}
 
 function setDemos(json, nextWeekOffset) {
   return {

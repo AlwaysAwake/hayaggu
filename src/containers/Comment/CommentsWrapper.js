@@ -17,6 +17,7 @@ class CommentsWrapper extends Component {
   }
 
   componentDidMount() {
+    this.props.dispatch(Actions.clearRecentCommentExist());
     window.addEventListener('scroll', this.handleScroll);
   }
 
